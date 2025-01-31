@@ -1,12 +1,7 @@
-# Binary Search Algorithm: Deep Dive
+## Binary Search Algorithm: Assuming its sorted 
 
-## Overview
+### Overview
 Binary search is a highly efficient search algorithm that operates on sorted data by repeatedly dividing the search interval in half. In our log file processing context, it's particularly valuable for quickly locating specific dates within a large (1TB) chronologically ordered log file.
-
-
-
-
-## How Binary Search Works
 
 ### Basic Principle
 1. Start with the entire search range
@@ -16,18 +11,18 @@ Binary search is a highly efficient search algorithm that operates on sorted dat
 5. Repeat until target is found or range is empty
 
 --------------------------------
-### After failing to implement binary search, I came to know its unsorted data.####
+## After failing to implement binary search, I came to know its unsorted data.####
 --------------------------------
 
-1. Chunk-based Processing:
+## Chunk-based Processing:
 Reads file in large chunks (100MB) for efficient I/O
 Processes each chunk line by line
 Handles lines that span chunk boundaries
-2. Concurrent Processing:
+## Concurrent Processing:
 Uses a separate thread for writing output
 Main thread focuses on reading and matching
 Uses a queue to buffer matches between threads
-3. Memory Efficient:
+## Memory Efficient:
 Streams data instead of loading entire file
 Only keeps matching lines in memory
 Uses a bounded queue to prevent memory overflow

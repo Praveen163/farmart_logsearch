@@ -16,23 +16,19 @@ Binary search is a highly efficient search algorithm that operates on sorted dat
 5. Repeat until target is found or range is empty
 
 --------------------------------
-### After failing to implement binary search, I tried to implement a hybrid approach.####
+### After failing to implement binary search, I came to know its unsorted data.####
 --------------------------------
 
-### Smart Initial Position:
-Calculates an approximate position based on the target date's position in the year
-Reduces the initial search space significantly
+1. Chunk-based Processing:
+Reads file in large chunks (100MB) for efficient I/O
+Processes each chunk line by line
+Handles lines that span chunk boundaries
+2. Concurrent Processing:
+Uses a separate thread for writing output
+Main thread focuses on reading and matching
+Uses a queue to buffer matches between threads
+3. Memory Efficient:
+Streams data instead of loading entire file
+Only keeps matching lines in memory
+Uses a bounded queue to prevent memory overflow
 
-### Optimized Search Strategy:
-Uses a hybrid approach combining approximate positioning and linear search
-Uses larger step sizes (4KB) for faster scanning
-Once a match is found, uses linear search to find exact boundaries
-Eliminates the need for binary search, which can be slower for large files
-
-### Faster Data Copying:
-Increased chunk size to 10MB for faster copying
-Reduced number of I/O operations
-
-### More Efficient Date Handling:
-Only performs date parsing when necessary
-Uses string comparison when possible instead of datetime parsing
